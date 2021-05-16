@@ -1,0 +1,33 @@
+{
+  "name": "vow-ui",
+  "version": "0.0.2",
+  "author": "genfa.zeng",
+  "description": "组件库",
+  "main":"dist/traveler.es.js",
+  "module": "dist/traveler.umd.js",
+  "style":"dist/style.css",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "^15.3.0",
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.5",
+    "sass": "^1.32.13",
+    "typescript": "^4.1.3",
+    "vite": "^2.3.0",
+    "vue-tsc": "^0.0.24"
+  },
+  "files":[
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
+}

@@ -1,0 +1,20 @@
+@include b(infinite-loading) {
+  width: 100%;
+  @include e(top) {
+    width: 100%;
+    overflow: hidden;
+    @include flex(row, center, center);
+  }
+  @include e(refresh-box) {
+    width: 100%;
+    @include flex(column, center, center);
+  }
+  @include e(refresh-icon) {
+    width: 28px;
+    height: 24px;
+  }
+  @include e(refresh-text) {
+    font-size: 10px;
+    color: #000;
+  }
+}

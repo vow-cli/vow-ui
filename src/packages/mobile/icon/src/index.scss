@@ -1,0 +1,20 @@
+@import '../../../../styles/iconfont/iconfont.css';
+@include b(icon) {
+  display: inline-block;
+  position: relative;
+  text-align: right;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @include e(img) {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+}

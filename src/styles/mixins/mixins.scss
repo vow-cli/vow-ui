@@ -121,3 +121,20 @@
     @content;
   }
 }
+
+//flex布局
+@mixin flex($direction: row, $justify: null, $align: null, $flex-wrap: null) {
+  display: flex;
+  @if ($direction!=null) {
+    flex-direction: $direction;
+  }
+  @if ($justify!=null) {
+    justify-content: $justify;
+  }
+  @if ($align!=null) {
+    align-items: $align;
+  }
+  @if ($flex-wrap != null) {
+    flex-wrap: $flex-wrap;
+  }
+}

@@ -2,12 +2,13 @@
  * @Author: genfa.zeng
  * @Date: 2021-05-16 11:53:49
  * @LastEditors: genfa.zeng
- * @LastEditTime: 2021-05-16 17:39:37
+ * @LastEditTime: 2021-05-29 12:01:05
  * @Description:
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,6 +25,11 @@ export default defineConfig({
       entry: 'src/vow-ui.ts',
       name: 'vow-ui',
       formats: ['es', 'umd'],
+    },
+    rollupOptions: {
+      input: {
+        mobile: resolve(__dirname, 'mobile.html'),
+      },
     },
   },
   css: {

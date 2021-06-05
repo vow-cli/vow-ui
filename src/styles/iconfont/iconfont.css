@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'vowui-iconfont'; /* Project id 2580195 */
-  src: url('iconfont.woff2?t=1622360308320') format('woff2'),
-    url('iconfont.woff?t=1622360308320') format('woff'),
-    url('iconfont.ttf?t=1622360308320') format('truetype');
+  src: url('iconfont.woff2?t=1622897891710') format('woff2'),
+    url('iconfont.woff?t=1622897891710') format('woff'),
+    url('iconfont.ttf?t=1622897891710') format('truetype');
 }
 
 .vowui-iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.vow-icon-loading:before {
+  content: '\e7c3';
 }
 
 .vow-icon-volume:before {

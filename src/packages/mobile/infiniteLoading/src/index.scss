@@ -17,4 +17,21 @@
     font-size: 10px;
     color: #000;
   }
+  @include e(load-box) {
+    @include flex(row, center, center);
+    padding: 12px 0;
+  }
+  @include e(load-text) {
+    font-size: 10px;
+    color: #000;
+    margin-left: 5px;
+  }
+  @include e(nomore-box) {
+    @include flex(row, center, center);
+    padding: 12px 0;
+  }
+  @include e(nomore-text) {
+    font-size: 10px;
+    color: #000;
+  }
 }

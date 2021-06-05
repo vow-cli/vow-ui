@@ -2,13 +2,18 @@
  * @Author: genfa.zeng
  * @Date: 2021-05-29 11:00:44
  * @LastEditors: genfa.zeng
- * @LastEditTime: 2021-05-30 17:29:29
+ * @LastEditTime: 2021-06-05 22:07:39
  * @Description: 
 -->
 <template>
   <div class="infinite-demo">
     <ul class="infinite-demo__ul">
-      <vow-infinite-loading refresh-icon="cart" :is-open-refresh="true" @refresh="refresh">
+      <vow-infinite-loading
+        refresh-icon="cart"
+        :is-open-refresh="true"
+        @refresh="refresh"
+        @load-more="loadMore"
+      >
         <li v-for="(item, index) in defaultList" :key="index" class="infinite-demo__li">
           {{ item }}
         </li>
@@ -26,7 +31,7 @@ export default defineComponent({
     })
 
     const init = () => {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 100; i++) {
         data.defaultList.push(`${i}`)
       }
     }
@@ -37,8 +42,14 @@ export default defineComponent({
     const refresh = (done: () => void) => {
       done()
     }
+
+    const loadMore = (done: () => void) => {
+      console.log('load-more')
+      done()
+    }
     return {
       refresh,
+      loadMore,
       ...toRefs(data),
     }
   },
@@ -51,8 +62,9 @@ body {
   height: 100%;
 }
 .infinite-demo {
+  padding-top: 200px;
   &__ul {
-    height: 300px;
+    height: 100%;
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;

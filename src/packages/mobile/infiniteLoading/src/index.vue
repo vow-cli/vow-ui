@@ -2,11 +2,12 @@
  * @Author: genfa.zeng
  * @Date: 2021-05-22 17:59:03
  * @LastEditors: genfa.zeng
- * @LastEditTime: 2021-05-30 17:28:58
+ * @LastEditTime: 2021-06-05 22:07:30
  * @Description: 
 -->
 <template>
   <div
+    ref="scroller"
     class="vow-infinite-loading"
     @touchstart="touchStart"
     @touchmove="touchMove"
@@ -23,18 +24,18 @@
       <slot></slot>
     </div>
     <div class="vow-infinite-loading__bottom">
-      <div class="vow-infinite-loading__load-box">
+      <div v-if="isInfiniting" class="vow-infinite-loading__load-box">
         <vow-icon class="vow-infinite-loading__load-icon" :name="loadIcon"></vow-icon>
-        <span class="vow-infinite-loading__load-text"></span>
+        <span class="vow-infinite-loading__load-text">{{ loadText }}</span>
       </div>
-      <div class="vow-infinite-loading__nomore-box">
-        <span class="vow-infinite-loading__nomore-text"></span>
+      <div v-else-if="!hasMore" class="vow-infinite-loading__nomore-box">
+        <span class="vow-infinite-loading__nomore-text">{{ noMoreText }}</span>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, reactive, toRefs } from 'vue'
+import { computed, defineComponent, onMounted, onUnmounted, reactive, toRefs } from 'vue'
 export default defineComponent({
   name: 'VowInfiniteLoading',
   props: {
@@ -57,25 +58,39 @@ export default defineComponent({
     },
     loadIcon: {
       type: String,
-      default:
-        'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png',
+      default: 'loading',
     },
     loadText: {
       type: String,
       default: '加载中...',
     },
-    loadMoreText: {
+    noMoreText: {
       type: String,
       default: '到底了~',
+    },
+    useWindow: {
+      type: Boolean,
+      default: true,
+    },
+    containerId: {
+      type: String,
+      default: '',
+    },
+    useCapture: {
+      type: Boolean,
+      default: false,
     },
     isOpenRefresh: {
       type: Boolean,
       default: false,
     },
   },
-  emits: ['refresh'],
+  emits: ['refresh', 'load-more', 'scroll-change'],
   setup(props, { emit }) {
     const state = reactive({
+      scrollEl: window as Window | HTMLElement | (Node & ParentNode),
+      scroller: null as null | HTMLElement,
+      isInfiniting: false,
       isTouching: false,
       beforeScrollTop: 0,
       refreshTopRef: null as null | HTMLElement,
@@ -129,7 +144,89 @@ export default defineComponent({
         emit('refresh', refreshDone)
       }
     }
+    const requestAniFrame = () => {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback, 1000 / 60)
+        }
+      )
+    }
+    const getParentElement = (el: HTMLElement) => {
+      return !!props.containerId
+        ? document.querySelector(`#${props.containerId}`)
+        : el && el.parentNode
+    }
 
+    const getWindowScrollTop = () => {
+      return window.pageYOffset !== undefined
+        ? window.pageYOffset
+        : (document.documentElement || document.body.parentNode || document.body).scrollTop
+    }
+
+    const calculateTopPosition = (el: HTMLElement): number => {
+      return !el ? 0 : el.offsetTop + calculateTopPosition(el.offsetParent as HTMLElement)
+    }
+
+    const isScrollAtBottom = () => {
+      let offsetDistance = 0
+      let resScrollTop = 0
+      let direction = 'down'
+      const windowScrollTop = getWindowScrollTop()
+      if (props.useWindow) {
+        if (state.scroller) {
+          offsetDistance =
+            calculateTopPosition(state.scroller) +
+            state.scroller.offsetHeight -
+            windowScrollTop -
+            window.innerHeight
+        }
+
+        resScrollTop = windowScrollTop
+      } else {
+        const { scrollHeight, clientHeight, scrollTop } = state.scrollEl as HTMLElement
+        offsetDistance = scrollHeight - clientHeight - scrollTop
+        resScrollTop = scrollTop
+      }
+      if (state.beforeScrollTop > resScrollTop) {
+        direction = 'up'
+      } else {
+        direction = 'down'
+      }
+      state.beforeScrollTop = resScrollTop
+      emit('scroll-change', resScrollTop)
+      return offsetDistance <= props.threshold && direction == 'down'
+    }
+
+    const infiniteDone = () => {
+      state.isInfiniting = false
+    }
+
+    const handleScroll = () => {
+      requestAniFrame()(() => {
+        if (!isScrollAtBottom() || !props.hasMore || state.isInfiniting) {
+          return false
+        } else {
+          state.isInfiniting = true
+          emit('load-more', infiniteDone)
+        }
+      })
+    }
+
+    const scrollListener = () => {
+      state.scrollEl.addEventListener('scroll', handleScroll, props.useCapture)
+    }
+
+    onMounted(() => {
+      const parentElement = getParentElement(state.scroller as HTMLElement) as Node & ParentNode
+      state.scrollEl = props.useWindow ? window : parentElement
+      scrollListener()
+    })
+
+    onUnmounted(() => {
+      state.scrollEl.removeEventListener('scroll', handleScroll, props.useCapture)
+    })
     return {
       ...toRefs(state),
       touchStart,

@@ -1,14 +1,15 @@
 /*
  * @Author: genfa.zeng
  * @Date: 2021-05-16 11:53:49
- * @LastEditors: genfa.zeng
- * @LastEditTime: 2021-05-29 12:01:05
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-27 00:46:05
  * @Description:
  */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { resolve } from 'path'
+import Markdown from 'vite-plugin-md'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,11 +36,14 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
         additionalData: `@import "@/styles/common/variables.scss";@import "@/styles/mixins/mixins.scss";`,
       },
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+    Markdown(),
+  ],
 })

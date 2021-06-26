@@ -14,7 +14,7 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     const { name, show } = element
     if (show) {
-      importStr += `import ${name} from './packages/mobile/${name.toLowerCase()}/index.vue'\n`
+      importStr += `import ${name} from './packages/mobile/${name.toLowerCase()}/src/index.vue'\n`
       packages.push(name)
     }
   })

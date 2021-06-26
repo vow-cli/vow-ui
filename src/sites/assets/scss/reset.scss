@@ -58,6 +58,10 @@ video {
   -webkit-overflow-scrolling: touch;
 }
 
+ul,
+ol {
+  list-style: none;
+}
 /* ios默认文本框阴影 */
 
 input[type='text'],

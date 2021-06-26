@@ -1,7 +1,27 @@
 {
-  "versions": [],
-  "header": [],
-  "docs": {},
+  "versions": [
+    {
+      "name": "1.x",
+      "link": "/1x/"
+    }
+  ],
+  "header": [
+    {
+      "name": "intro",
+      "title": "介绍",
+      "path": "/intro"
+    },
+    {
+      "name": "start",
+      "title": "入门",
+      "path": "/start"
+    },
+    {
+      "name": "component",
+      "title": "组件",
+      "path": "/component"
+    }
+  ],
   "nav": [
     {
       "name": "布局组件",

@@ -1,16 +1,9 @@
-/*
- * @Author: genfa.zeng
- * @Date: 2021-05-16 11:53:48
- * @LastEditors: genfa.zeng
- * @LastEditTime: 2021-05-30 17:06:47
- * @Description:
- */
 import { App } from 'vue'
-import InfiniteLoading from './packages/mobile/infiniteLoading/index'
-import Icon from './packages/mobile/icon/index'
+import Icon from './packages/mobile/icon/index.vue'
+import InfiniteLoading from './packages/mobile/infiniteloading/index.vue'
 
 function install(app: App): void {
-  const packages = [InfiniteLoading, Icon]
+  const packages = [Icon, InfiniteLoading]
   packages.forEach((component) => {
     if (component.install) {
       app.use(component)
@@ -19,7 +12,5 @@ function install(app: App): void {
     }
   })
 }
-
-export { InfiniteLoading, Icon }
-
-export default { install, version: '1.0.0' }
+export { Icon, InfiniteLoading }
+export default { install, version: '0.0.2' }

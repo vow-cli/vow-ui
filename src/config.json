@@ -1,0 +1,50 @@
+{
+  "versions": [],
+  "header": [],
+  "docs": {},
+  "nav": [
+    {
+      "name": "布局组件",
+      "packages": [
+
+      ]
+    },
+    {
+      "name": "操作反馈",
+      "packages": []
+    },
+    {
+      "name": "基础组件",
+      "packages": [
+        {
+          "name": "Icon",
+          "sort": 3,
+          "title": "图标组件",
+          "desc": "图标",
+          "show": true,
+          "author": "genfa.zeng"
+        },
+        {
+          "name": "InfiniteLoading",
+          "sort": 3,
+          "show": true,
+          "title": "滚动加载",
+          "desc": "列表滚动到底部自动加载更多数据",
+          "author": "genfa.zeng"
+        }
+      ]
+    },
+    {
+      "name": "导航组件",
+      "packages": []
+    },
+    {
+      "name": "数据录入",
+      "packages": []
+    },
+    {
+      "name": "业务组件",
+      "packages": []
+    }
+  ]
+}

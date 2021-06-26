@@ -20,5 +20,7 @@ module.exports = {
     'prettier',
     'plugin:prettier/recommended',
   ],
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-var-requires': 'off',
+  },
 }

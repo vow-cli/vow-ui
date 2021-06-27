@@ -34,9 +34,9 @@ app.use(Icon)
 `Icon` 的 `color` 属性用来设置图标的颜色。
 
 ```html
-<vow-icon name="dongdong" color="#fa2c19"></vow-icon>
-<vow-icon name="dongdong" color="#64b578"></vow-icon>
-<vow-icon name="JD" color="#fa2c19"></vow-icon>
+<vow-icon name="loading" color="#fa2c19"></vow-icon>
+<vow-icon name="check" color="#64b578"></vow-icon>
+<vow-icon name="getup" color="#fa2c19"></vow-icon>
 ```
 
 ### 图标大小
@@ -44,9 +44,9 @@ app.use(Icon)
 `Icon` 的 `size` 属性用来设置图标的尺寸大小，默认单位为 `px`。
 
 ```html
-<vow-icon name="dongdong"></vow-icon>
-<vow-icon name="dongdong" size="24"></vow-icon>
-<vow-icon name="dongdong" size="16"></vow-icon>
+<vow-icon name="mark"></vow-icon>
+<vow-icon name="mark" size="24"></vow-icon>
+<vow-icon name="mark" size="16"></vow-icon>
 ```
 
 ### 自定义图标

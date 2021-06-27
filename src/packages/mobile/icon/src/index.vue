@@ -1,8 +1,6 @@
 <!--
  * @Author: genfa.zeng
  * @Date: 2021-05-30 15:48:58
- * @LastEditors: genfa.zeng
- * @LastEditTime: 2021-05-30 17:11:22
  * @Description: 
 -->
 <script lang="ts">
@@ -53,9 +51,9 @@ export default defineComponent({
         class: _isImage ? 'vow-icon-img' : `${props.classPrefix} vow-icon-${props.name}`,
         style: {
           color: props.color,
-          fontSize: iconSize,
-          width: iconSize,
-          height: iconSize,
+          fontSize: iconSize.value,
+          width: iconSize.value,
+          height: iconSize.value,
         },
         onClick: handleClick,
         src: _isImage ? props.name : '',

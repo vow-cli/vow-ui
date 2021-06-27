@@ -10,15 +10,17 @@
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'App',
+  setup() {
+    return {}
+  },
 })
 </script>
 
 <style lang="scss">
 #doc {
-  background: #f7f8fa;
-  height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
 }
 </style>

@@ -7,6 +7,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import '@/sites/assets/scss/reset.scss'
+import '@/sites/assets/scss/theme.scss'
+import 'highlight.js/styles/color-brewer.css'
 import { isMobile } from '@/sites/utils/isMobile'
 
 if (isMobile) {

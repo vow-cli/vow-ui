@@ -5,7 +5,6 @@ const componentPages = []
 const modulesPage = import.meta.glob('/src/packages/mobile/**/doc.md')
 for (const path in modulesPage) {
   const name = (/packages\/mobile\/(.*)\/src\/doc.md/.exec(path) as any[])[1]
-  console.log(name)
   componentPages.push({
     path: '/' + name,
     component: modulesPage[path],
@@ -33,6 +32,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/component',
         name: 'component',
+        redirect: componentPages[0].name,
         component: () => import('@/sites/doc/views/Component.vue'),
         children: componentPages,
       },

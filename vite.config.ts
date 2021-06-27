@@ -1,10 +1,3 @@
-/*
- * @Author: genfa.zeng
- * @Date: 2021-05-16 11:53:49
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-06-27 00:46:05
- * @Description:
- */
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
@@ -36,7 +29,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/styles/common/variables.scss";@import "@/styles/mixins/mixins.scss";`,
+        additionalData: `@import "@/styles/common/variables.scss";@import "@/sites/assets/scss/variables.scss";@import "@/styles/mixins/mixins.scss";`,
       },
     },
   },

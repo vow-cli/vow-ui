@@ -50,7 +50,8 @@ export default defineComponent({
 .doc {
   &-content {
     padding-top: 58px;
-    flex: 1;
+    height: 100%;
+    overflow: hidden;
     &-document {
       height: 100%;
     }

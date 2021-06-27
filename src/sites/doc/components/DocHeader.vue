@@ -6,7 +6,7 @@
 <template>
   <div class="doc-header">
     <div class="doc-header-icon">
-      <span class="doc-header-icon__text">Vow UI</span>
+      <span class="doc-header-icon__text">vow ui</span>
     </div>
     <div class="doc-header-content">
       <div class="doc-header-search">

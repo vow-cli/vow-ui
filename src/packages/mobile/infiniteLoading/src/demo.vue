@@ -55,12 +55,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-html,
-body {
-  height: 100%;
-}
 .infinite-demo {
-  padding-top: 200px;
   &__ul {
     height: 100%;
     width: 100%;

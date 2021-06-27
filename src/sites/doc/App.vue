@@ -17,6 +17,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
 #doc {
   width: 100%;
   height: 100%;

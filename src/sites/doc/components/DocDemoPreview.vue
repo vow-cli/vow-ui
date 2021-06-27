@@ -23,8 +23,13 @@ export default defineComponent({
 
 <style lang="scss">
 .doc-demo-preview {
-  height: 667px;
+  height: 100%;
+  max-height: 667px;
   width: 375px;
+  background: #fafafa;
+  border-radius: 20px;
+  box-shadow: 0 8px 12px #ebedf0;
+  overflow: hidden;
   iframe {
     height: 100%;
     width: 100%;

@@ -22,12 +22,12 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/intro',
         name: 'intro',
-        component: () => import('@/sites/doc/views/Intro.vue'),
+        component: () => import('@/sites/doc/views/Intro.md'),
       },
       {
         path: '/start',
         name: 'start',
-        component: () => import('@/sites/doc/views/Start.vue'),
+        component: () => import('@/sites/doc/views/Start.md'),
       },
       {
         path: '/component',

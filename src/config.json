@@ -25,13 +25,21 @@
   "nav": [
     {
       "name": "布局组件",
-      "packages": [
-
-      ]
+      "packages": []
     },
     {
       "name": "操作反馈",
-      "packages": []
+      "packages": [
+        {
+          "name": "Toast",
+          "type": "",
+          "title": "吐司",
+          "desc": "提示弹窗",
+          "show": true,
+          "author": "genfa.zeng",
+          "sort": "操作反馈"
+        }
+      ]
     },
     {
       "name": "基础组件",

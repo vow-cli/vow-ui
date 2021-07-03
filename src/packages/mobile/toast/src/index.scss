@@ -1,0 +1,86 @@
+//toast transition
+.toast-fade-enter-active {
+  transition: opacity 0.3s;
+}
+
+.toast-fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.toast-fade-enter-from,
+.toast-fade-leave-to {
+  opacity: 0;
+}
+
+@keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@include b(toast) {
+  position: fixed;
+  left: 0;
+  bottom: 150px;
+  width: 100%;
+  text-align: center;
+  //使其无法成为鼠标事件target,无法穿透当前层
+  pointer-events: none;
+  z-index: 999;
+  font-family: $font-family;
+  @include when(small) {
+    @include e(inner) {
+      font-size: $size-font-small;
+    }
+  }
+  @include when(large) {
+    @include e(inner) {
+      font-size: $size-font-large;
+    }
+  }
+  @include when(cover) {
+    @include flex(row, center, center);
+    pointer-events: auto;
+    height: 100%;
+  }
+  @include when(has-icon) {
+    @include e(icon-wrapper) {
+      @include flex(row, center, center);
+      margin-bottom: 8px;
+    }
+  }
+  @include when(center) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @include when(loading) {
+    @include e(inner) {
+      @include flex(column, center, center);
+    }
+    @include e(icon-wrapper) {
+      animation: rotation 2s linear infinite;
+    }
+  }
+
+  @include e(inner) {
+    display: inline-block;
+    font-size: $size-font-base;
+    min-width: 40%;
+    max-width: 65%;
+    text-align: center;
+    padding: 24px 30px;
+    word-break: break-all;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 12px;
+    color: $white-color;
+  }
+  @include e(text) {
+    font-size: inherit;
+    &:empty {
+      margin-bottom: 8px;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+//主题色
+$theme-color: #3963bc;
+
+//Color
+$default-color: $theme-color;
+$success-color: #34bfa3;
+$warning-color: #ffe57f;
+$error-color: #f4516c;
+$disabled-color: #dee2e6;
+$white-color: #fff;
+$block-color: #000;
+
+//Text
+$title-color: #333;
+$text-color: #888;
+
+//Background color
+$background-color-base: #f8f8f8;
+
+//Border-color
+$border-color-base: #dddee1; //outside
+$border-color-split: #e9eaec; //inside
+
+//Size
+$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif !default;
+$size-font-base: 14px;
+$size-font-small: 12px;
+$size-font-mini: 10px;
+$size-font-large: 16px;
+
+//Animation
+$animation-time: 0.3s;
+$transition-time: 0.2s;
+$ease-in-out: ease-in-out;

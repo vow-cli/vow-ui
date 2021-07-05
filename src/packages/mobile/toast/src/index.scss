@@ -27,7 +27,7 @@
   bottom: 150px;
   width: 100%;
   text-align: center;
-  //使其无法成为鼠标事件target,无法穿透当前层
+  //使其无法成为鼠标事件target,none表示穿透当前层
   pointer-events: none;
   z-index: 999;
   font-family: $font-family;

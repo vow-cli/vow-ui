@@ -1,10 +1,12 @@
 <template>
-  <div></div>
+  <div class="vow-sticky">
+    <slot></slot>
+  </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'componentName',
+  name: 'VowSticky',
   setup() {
     return {}
   },

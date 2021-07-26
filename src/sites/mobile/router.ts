@@ -2,7 +2,7 @@
  * @Author: genfa.zeng
  * @Date: 2021-05-29 10:46:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-06-27 18:54:41
+ * @LastEditTime: 2021-07-26 19:45:54
  * @Description:
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
@@ -23,7 +23,7 @@ for (const path in modulesPage) {
   routes.push({
     path: '/' + name,
     component: modulesPage[path],
-    name: name ? name[1] : '',
+    name: name ? name : '',
     meta: { title: name, showNav: true },
   })
 }

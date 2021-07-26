@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div class="vow-sticky-item">吸顶容器子组件</div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'componentName',
+  name: 'VowStickyItem',
   setup() {
     return {}
   },

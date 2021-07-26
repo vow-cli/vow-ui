@@ -25,7 +25,26 @@
   "nav": [
     {
       "name": "布局组件",
-      "packages": []
+      "packages": [
+        {
+          "name": "Sticky",
+          "type": "",
+          "title": "吸顶容器",
+          "desc": "吸顶容器",
+          "show": true,
+          "author": "genfa.zeng",
+          "sort": "布局组件"
+        },
+        {
+          "name": "StickyItem",
+          "type": "",
+          "title": "吸顶容器子组件",
+          "desc": "吸顶容器子组件",
+          "show": false,
+          "author": "genfa.zeng",
+          "sort": "布局组件"
+        }
+      ]
     },
     {
       "name": "操作反馈",

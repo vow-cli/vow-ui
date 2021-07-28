@@ -1,0 +1,121 @@
+<!--
+ * @Author: genfa.zeng
+ * @Date: 2021-07-26 23:15:35
+ * @Description: js实现思路，以父容器作为参照物
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html,
+    body {
+      height: 100%;
+    }
+    #app {
+      height: 100%;
+      overflow: auto;
+    }
+    .top {
+      height: 30px;
+      background: #000;
+    }
+    .header-part1 {
+      width: 100%;
+      height: 48px;
+      background: #ccc;
+    }
+    .header-part2 {
+      width: 100%;
+      height: 48px;
+      background: #ccc;
+    }
+    ul li {
+      list-style: none;
+    }
+    li {
+      height: 200px;
+      border-bottom: 1px solid #ccc;
+    }
+    .sticky-container {
+      height: 50vh;
+      margin-top: 20vh;
+      overflow: auto;
+    }
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .fixed48 {
+      position: fixed;
+      top: 48px;
+      left: 0;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <div class="sticky-container" id="stickyContainer">
+        <div class="top"></div>
+        <div class="sticky-item">
+          <header class="sticky-item-header header-part1">搜索组件1</header>
+          <ul class="sticky-item-content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>6</li>
+            <div class="sticky-item">
+              <header class="sticky-item-header header-part2">搜索组件2</header>
+              <ul class="sticky-item-content">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>6</li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const stickyContainer = document.querySelector('#stickyContainer')
+    const headerPart1 = document.querySelector('.header-part1')
+    const headerPart2 = document.querySelector('.header-part2')
+    const { top: stickyContainerTop } = stickyContainer.getBoundingClientRect()
+    const { top: header1Top, height } = headerPart1.getBoundingClientRect()
+    const { top: header2Top } = headerPart2.getBoundingClientRect()
+    stickyContainer.addEventListener('scroll', function (e) {
+      const scrollTop = stickyContainer.scrollTop
+      const isFixedTop1 = scrollTop + stickyContainerTop > header1Top
+      const isFixedTop2 = scrollTop + stickyContainerTop > header2Top - 96
+      //96代表top+height
+      if (isFixedTop1) {
+        // headerPart1.classList.add('fixed')
+        headerPart1.style.position = 'fixed'
+        headerPart1.style.top = stickyContainerTop + 'px'
+      } else {
+        //headerPart1.classList.remove('fixed')
+        headerPart1.style.position = 'static'
+      }
+      if (isFixedTop2) {
+        //headerPart2.classList.add('fixed48')
+        headerPart2.style.position = 'fixed'
+        headerPart2.style.top = stickyContainerTop + 48 + 'px'
+      } else {
+        //headerPart2.classList.remove('fixed48')
+        headerPart2.style.position = 'static'
+      }
+    })
+  </script>
+</html>

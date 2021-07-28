@@ -1,0 +1,132 @@
+<!--
+ * @Author: genfa.zeng
+ * @Date: 2021-07-26 20:17:13
+ * @Description: js实现思路，以window作为参照物
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html,
+    body {
+      height: 100%;
+    }
+    #app {
+      /* height: 100%; */
+      overflow: auto;
+    }
+    .top {
+      height: 30px;
+      background: #000;
+    }
+    .header-part1 {
+      width: 100%;
+      height: 48px;
+      background: #ccc;
+    }
+    .header-part2 {
+      width: 100%;
+      height: 48px;
+      background: #ccc;
+    }
+    ul li {
+      list-style: none;
+    }
+    li {
+      height: 200px;
+      border-bottom: 1px solid #ccc;
+    }
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    .fixed48 {
+      position: fixed;
+      top: 48px;
+      left: 0;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <div class="top"></div>
+      <div>
+        <div class="sticky-item">
+          <header class="sticky-item-header header-part1">搜索组件1</header>
+          <ul class="sticky-item-content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>6</li>
+            <div class="sticky-item">
+              <header class="sticky-item-header header-part2">搜索组件2</header>
+              <ul class="sticky-item-content">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>6</li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const headerPart1 = document.querySelector('.header-part1')
+    const headerPart2 = document.querySelector('.header-part2')
+    //通过scrollTop与offsetTop比较
+    // const part1Top = headerPart1.offsetTop
+    // const part2Top = headerPart2.offsetTop
+    // console.log(part1Top)
+    // console.log(part2Top)
+    // window.addEventListener('scroll', function (e) {
+    //   const part1Top = headerPart1.offsetTop
+    //   const part2Top = headerPart2.offsetTop
+    //   if (window.pageYOffset >= part1Top) {
+    //     console.log('fixed')
+    //     headerPart1.classList.add('fixed')
+    //   } else {
+    //     headerPart1.classList.remove('fixed')
+    //   }
+    //   if (window.pageYOffset >= part2Top) {
+    //     headerPart2.classList.add('fixed48')
+    //   } else {
+    //     headerPart2.classList.remove('fixed48')
+    //   }
+    // })
+
+    //way2:通过getBoundingRect和scrollTop
+    const { top: header1Top, height } = headerPart1.getBoundingClientRect()
+    const { top: header2Top } = headerPart2.getBoundingClientRect()
+    console.log(header2Top)
+    window.addEventListener('scroll', function (e) {
+      const scrollTop = window.pageYOffset
+      // console.log(headerTop, scrollTop)
+      const isFixedTop1 = scrollTop > header1Top
+      const isFixedTop2 = scrollTop > header2Top - 96
+      //96代表top+height
+      if (isFixedTop1) {
+        headerPart1.classList.add('fixed')
+      } else {
+        headerPart1.classList.remove('fixed')
+      }
+      if (isFixedTop2) {
+        headerPart2.classList.add('fixed48')
+      } else {
+        headerPart2.classList.remove('fixed48')
+      }
+    })
+  </script>
+</html>
